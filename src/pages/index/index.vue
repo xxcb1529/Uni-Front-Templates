@@ -1,13 +1,16 @@
 <template>
-  <u-swiper :list="list3" indicator indicatorMode="line" circular></u-swiper>
+  <wd-swiper :list="videoList" autoplay :indicator="false" indicator-position="bottom-right"></wd-swiper>
 </template>
 
 <script setup lang="ts">
-const list3 = [
-  "https://cdn.uviewui.com/uview/swiper/swiper3.png",
-  "https://cdn.uviewui.com/uview/swiper/swiper2.png",
-  "https://cdn.uviewui.com/uview/swiper/swiper1.png",
-];
+import { ref } from 'vue'
+
+const videoList = ref([
+  'https://unpkg.com/wot-design-uni-assets@1.0.3/VID_115503.mp4',
+  'https://unpkg.com/wot-design-uni-assets@1.0.3/VID_150752.mp4',
+  'https://unpkg.com/wot-design-uni-assets@1.0.3/VID_155516.mp4',
+  'https://registry.npmmirror.com/wot-design-uni-assets/*/files/moon.jpg'
+])
 </script>
 
 <style>

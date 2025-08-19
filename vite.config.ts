@@ -9,6 +9,16 @@ export default defineConfig({
   build: {
     sourcemap: process.env.NODE_ENV === "development",
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+        silentDepsWarnings: true,
+        silenceDeprecations: ['legacy-js-api', 'import', 'global-builtin']
+      }
+    },
+    devSourcemap: process.env.NODE_ENV === 'development'
+  },
   plugins: [
     uni(),
     AutoImport({
@@ -20,5 +30,6 @@ export default defineConfig({
         enabled: true,
       },
     }),
+
   ],
 });
