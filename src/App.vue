@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { onLaunch, onShow, onHide } from "@dcloudio/uni-app";
+import { LOGIN_PATH } from "@/config/auth";
+import { navigateToLogin } from "@/utils/navigation";
+import { normalizePagePath } from "@/utils/route";
 import { beforEach } from "./router";
 onLaunch(() => {
   console.log("App Launch");
@@ -7,13 +10,18 @@ onLaunch(() => {
 onShow((options) => {
   console.log("App Show");
   setTimeout(() => {
-    const currentPage = options.path;
+    const toPath = normalizePagePath(options?.path);
+    if (!toPath) return;
     beforEach(
-      { path: "/" },
-      { path: currentPage, fullPath: currentPage },
+      { path: toPath },
+      { path: toPath },
       (data) => {
-        if (data?.path) {
-          uni.redirectTo({ url: data.path });
+        if (data && typeof data === "object" && "path" in data) {
+          if (data.path === LOGIN_PATH) {
+            navigateToLogin();
+          } else {
+            uni.redirectTo({ url: data.path });
+          }
         }
       }
     );

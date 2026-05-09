@@ -6,7 +6,11 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-pnpm-lock.yaml
+
+# 环境变量（示例见 .env.example；本地覆盖可用 .env.local）
+.env
+.env.local
+.env.*.local
 
 node_modules
 .DS_Store

@@ -1,11 +1,14 @@
 import { createSSRApp } from "vue";
 import App from "./App.vue";
 import * as Pinia from "pinia";
-import router from './router'
+import pinia from "./stores";
+import router from "./router";
+import "@/utils/http";
+
 export function createApp() {
   const app = createSSRApp(App);
-  app.use(Pinia.createPinia());
-  app.use(router)
+  app.use(pinia);
+  app.use(router);
   return {
     app,
     Pinia,
